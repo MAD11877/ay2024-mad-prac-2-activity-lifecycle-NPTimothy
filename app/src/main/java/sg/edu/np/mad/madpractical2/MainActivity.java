@@ -34,7 +34,20 @@ public class MainActivity extends AppCompatActivity {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvDescription = findViewById(R.id.tvDescription);
         Button btnFollow = findViewById(R.id.btnFollow);
-        btnFollow.setOnClickListener(new btnFollowHandler());
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                user.followed = !user.followed;
+
+                Button btn = (Button)v;
+                if (user.followed) {
+                    btn.setText("Unfollow");
+                } else btn.setText("Follow");
+
+
+
+            }
+
+        });
 
         // Set the TextViews with the User's name, description and default button message
         tvName.setText(user.name);
@@ -44,14 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    class btnFollowHandler implements Button.OnClickListener {
-        public void onClick(View v) {
-            Button btn = (Button)v;
-
-            if (btn.getText() == "Follow") {
-                btn.setText("Unfollow");
-            } else btn.setText("Follow");
-
-        }
-    }
+//    class btnFollowHandler implements Button.OnClickListener {
+//        public void onClick(View v) {
+//            Button btn = (Button)v;
+//            if (btn.getText() == "Follow") {
+//                btn.setText("Unfollow");
+//            } else btn.setText("Follow");
+//
+//        }
+//    }
 }
